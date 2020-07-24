@@ -1,0 +1,9 @@
+#get number from the user
+n=int(input())
+#to avoid predefined function pow(n,n)
+print(n**n+n*n)
+'''to find pow() we can also use
+p=1
+for i in range(n):
+    p*=n
+print(p+n*n)'''
