@@ -1,0 +1,34 @@
+def counts(string_or_list):
+    # list x to store the printed character
+    x=[]
+    for i in string_or_list:
+        #to avoid the use of predefined function set()
+        if i not in x:
+            x.append(i)
+            #to avoid the use of predefined function count()
+            c=0
+            for j in string_or_list:
+                if i==j:
+                    c+=1
+            print(i,c)
+#creating list to store the conversation
+l=[]
+i=''
+#to find the length_of_conversation until the keyword quit
+length_of_conversation=-1
+#storing conversation until quit keyword is used to end the conversation
+while i!='quit':
+    i=input()
+    l.append(i)
+    length_of_conversation+=1
+#to remove quit keyword from the conversation
+l=l[:-1]
+#to concatenate the conversation to single string to find the character counts
+string=''
+for i in l:
+    string+=i
+print('characters with their counts')
+counts(string)
+print('words with their counts')
+counts(l)
+print('length of conversation: ',length_of_conversation)
