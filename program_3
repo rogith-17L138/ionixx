@@ -1,0 +1,50 @@
+d={}
+d['a_b'],d['b_c'],d['b_d'],d['a_c'],d['c_d'],d['a_d']=[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]
+x=1
+#storing the routes information
+while x:
+    try:
+        s=''
+        x=input().split()
+        if x[0]=='A':
+            s+='a_'
+        elif x[0]=='B':
+            s+='b_'
+        elif x[0]=='C':
+            s+='c_'
+        if x[1]=='D':
+            s+='d'
+        elif x[1]=='B':
+            s+='b'
+        elif x[1]=='C':
+            s+='c'
+        d[s]=[int(x[2])+int(x[3]),int(x[2]),int(x[3])]
+    except:
+        x=0
+minimum=999999999
+#checking for all the possibilities from A to D with minimum cost and distance
+if d['a_b'][0]!=0 and d['b_c'][0]!=0 and d['c_d'][0]!=0:
+    if d['a_b'][0]+d['b_c'][0]+d['c_d'][0]<minimum:
+        minimum=d['a_b'][0]+d['b_c'][0]+d['c_d'][0]
+        cost=d['a_b'][1]+d['b_c'][1]+d['c_d'][1]
+        dis=d['a_b'][2]+d['b_c'][2]+d['c_d'][2]
+        path='a_b_c_d'
+if d['a_b'][0]!=0 and d['b_d'][0]!=0:
+    if d['a_b'][0]+d['b_d'][0]<minimum:
+        minimum=d['a_b'][0]+d['b_d'][0]
+        cost=d['a_b'][1]+d['b_d'][1]
+        dis=d['a_b'][2]+d['b_d'][2]
+        path='a_b_d'
+if d['a_c'][0]!=0 and d['c_d'][0]!=0:
+    if d['a_c'][0]+d['c_d'][0]<minimum:
+        minimum=d['a_c'][0]+d['c_d'][0]
+        cost=d['a_c'][1]+d['c_d'][1]
+        dis=d['a_c'][2]+d['c_d'][2]
+        path='a_c_d'
+if d['a_d'][0]!=0:
+    if d['a_d'][0]<minimum:
+        minimum=d['a_d'][0]
+        cost=d['a_d'][1]
+        dis=d['a_d'][2]
+        path='a_d'
+print('path : {}\ncost : {}\ndistance : {}'.format(path,cost,dis))
